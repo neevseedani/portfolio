@@ -24,7 +24,7 @@ export default function Footer() {
               className="mt-1.5 text-sm"
               style={{ color: "rgba(255,255,255,0.35)" }}
             >
-              Designer & Developer · Stanford
+              Designer & Developer · Stanford University
             </p>
           </div>
 
