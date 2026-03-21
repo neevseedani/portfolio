@@ -16,20 +16,21 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const isHome = pathname === "/";
-
   useEffect(() => {
-    const onScroll = () => {
-      // Transition once user scrolls past ~90% of the viewport height (hero)
-      setScrolled(window.scrollY > window.innerHeight * 0.88);
+    // Threshold scales to the header height of each page type
+    const getThreshold = () => {
+      if (pathname === "/") return window.innerHeight * 0.88;       // full-height hero
+      if (pathname === "/about") return window.innerHeight * 0.70;  // 75vh photo header
+      return window.innerHeight * 0.38;                             // 42–46vh dark bands
     };
-    onScroll(); // check on mount
+    const onScroll = () => setScrolled(window.scrollY > getThreshold());
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
-  // Navbar is see-through only on the home page before scrolling past the hero
-  const transparent = isHome && !scrolled;
+  // Always transparent at the top — every page has a dark header
+  const transparent = !scrolled;
 
   return (
     <header

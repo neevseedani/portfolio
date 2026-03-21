@@ -11,10 +11,10 @@ const methodsSkills = ["User Research", "Design Systems", "Prototyping", "WCAG 2
 
 const funFacts = [
   { label: "Sport", value: "Collegiate Archery" },
-  { label: "Research", value: "Linguistics" },
-  { label: "Play", value: "Gaming & osu!" },
+  { label: "Self-study Interests", value: "Linguistics & Physics" },
+  { label: "Play", value: "League of Legends & osu!" },
   { label: "Community", value: "Breakthrough Ambassador" },
-  { label: "Role", value: "A3C Publicity Manager" },
+  { label: "New Obsession", value: "Thai Tea" },
 ];
 
 // metadata must be in a server component — moved to layout or keep as static string
@@ -23,24 +23,38 @@ const funFacts = [
 export default function AboutPage() {
   return (
     <>
-      {/* Dark cinematic header */}
+      {/* Full-bleed photo header */}
       <header
         className="relative -mt-[72px] overflow-hidden flex flex-col justify-end"
-        style={{ background: "var(--dark)", minHeight: "46vh", paddingBottom: "3.5rem" }}
+        style={{ minHeight: "75vh", paddingBottom: "3.5rem" }}
       >
-        {/* Grain texture */}
+        {/* Background photo */}
+        <Image
+          src="/images/about-hero.jpg"
+          alt=""
+          fill
+          className="object-cover object-center"
+          priority
+          aria-hidden
+          sizes="100vw"
+        />
+
+        {/* Gradient overlay — heavier at top for navbar, heavier at bottom for text legibility */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ opacity: 0.04, backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")", backgroundSize: "192px 192px" }}
+          style={{
+            background: "linear-gradient(to bottom, rgba(8,6,4,0.30) 0%, rgba(8,6,4,0.02) 45%, rgba(8,6,4,0.45) 100%)",
+          }}
           aria-hidden
         />
+
         <div className="relative px-6 mx-auto max-w-[1200px] w-full">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-[10px] font-semibold uppercase tracking-[0.2em] mb-3"
-            style={{ color: "rgba(255,255,255,0.35)" }}
+            style={{ color: "rgba(255,255,255,0.45)" }}
           >
             About
           </motion.p>
@@ -48,8 +62,8 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
-            className="font-display font-bold leading-[0.90]"
-            style={{ fontSize: "clamp(2.8rem,7vw,6rem)", color: "rgba(255,255,255,0.95)", letterSpacing: "-0.04em" }}
+            className="font-display font-bold leading-[0.88]"
+            style={{ fontSize: "clamp(3.5rem, 9vw, 9rem)", color: "rgba(255,255,255,0.95)", letterSpacing: "-0.05em" }}
           >
             About me
           </motion.h1>
@@ -57,8 +71,8 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.35 }}
-            className="mt-4 text-lg max-w-xl leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.50)" }}
+            className="mt-5 text-base sm:text-lg max-w-xl leading-relaxed"
+            style={{ color: "rgba(255,255,255,0.70)" }}
           >
             Designer + engineer, Stanford sophomore.
           </motion.p>
@@ -71,20 +85,24 @@ export default function AboutPage() {
 
           {/* Bio + photo */}
           <ScrollReveal className="mb-24">
-            <div className="flex flex-col md:flex-row md:items-start gap-12">
+            <div className="flex flex-col md:flex-row md:items-start gap-14">
               <div className="flex-shrink-0">
-                <div className="relative w-56 h-56 rounded-2xl overflow-hidden border border-[var(--border)]">
+                <div
+                  className="relative w-72 md:w-96"
+                  style={{ aspectRatio: "3/4", boxShadow: "0 12px 48px rgba(0,0,0,0.13)" }}
+                >
                   <Image
-                    src="/images/about/neev.webp"
+                    src="/images/about/IMG_7876.jpg"
                     alt="Neev Seedani"
-                    width={224}
-                    height={224}
-                    className="object-cover w-full h-full"
+                    fill
+                    className="object-cover"
+                    style={{ objectPosition: "center 20%" }}
+                    sizes="(max-width: 768px) 288px, 384px"
                   />
                 </div>
               </div>
-              <div className="flex-1 pt-1">
-                <div className="space-y-4 text-base text-[var(--text-secondary)] leading-relaxed max-w-lg">
+              <div className="flex-1 pt-2">
+                <div className="space-y-6 text-xl text-[var(--text-secondary)] leading-relaxed max-w-lg">
                   <p>
                     I&apos;m a sophomore at Stanford double-majoring in Design (UI/UX) and Computer Science (HCI).
                     I specialize in bubbly, intuitive experiences — with 3 years of work across product design, design systems, and full-stack projects.
@@ -102,92 +120,171 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
 
-          {/* Skills grid */}
+          {/* Photo gallery */}
+          <ScrollReveal className="mb-24">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--text-muted)] mb-6">
+              Photos
+            </p>
+            <div className="flex gap-4 overflow-x-auto pb-2" style={{ scrollbarWidth: "none" }}>
+              <div
+                className="relative flex-shrink-0 w-56"
+                style={{ aspectRatio: "3/4", boxShadow: "0 8px 32px rgba(0,0,0,0.10)" }}
+              >
+                <Image
+                  src="/images/about/IMG_7512.jpg"
+                  alt="Neev Seedani"
+                  fill
+                  className="object-cover"
+                  sizes="224px"
+                />
+              </div>
+              <div
+                className="relative flex-shrink-0 w-56"
+                style={{ aspectRatio: "3/4", boxShadow: "0 8px 32px rgba(0,0,0,0.10)" }}
+              >
+                <Image
+                  src="/images/about/IMG_6215.jpg"
+                  alt="Neev Seedani"
+                  fill
+                  className="object-cover"
+                  sizes="224px"
+                />
+              </div>
+              <div
+                className="relative flex-shrink-0 w-56"
+                style={{ aspectRatio: "3/4", boxShadow: "0 8px 32px rgba(0,0,0,0.10)" }}
+              >
+                <Image
+                  src="/images/about/DSF5831.jpg"
+                  alt="Neev Seedani"
+                  fill
+                  className="object-cover"
+                  sizes="224px"
+                />
+              </div>
+              <div
+                className="relative flex-shrink-0 w-56"
+                style={{ aspectRatio: "3/4", boxShadow: "0 8px 32px rgba(0,0,0,0.10)" }}
+              >
+                <Image
+                  src="/images/about/IMG_4047.jpg"
+                  alt="Neev Seedani"
+                  fill
+                  className="object-cover"
+                  sizes="224px"
+                />
+              </div>
+              <div
+                className="relative flex-shrink-0 w-56"
+                style={{ aspectRatio: "3/4", boxShadow: "0 8px 32px rgba(0,0,0,0.10)" }}
+              >
+                <Image
+                  src="/images/about/IMG_9736.jpg"
+                  alt="Neev Seedani"
+                  fill
+                  className="object-cover"
+                  sizes="224px"
+                />
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* Skills — editorial typographic index */}
           <ScrollReveal>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--text-muted)] mb-3">
-              Toolkit
-            </p>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold text-[var(--text-primary)] mb-8 tracking-[-0.02em]">
-              Skills & tools
-            </h2>
-            <div className="grid gap-6 sm:grid-cols-3">
-              {[
-                { label: "Design", skills: designSkills },
-                { label: "Engineering", skills: engineeringSkills },
-                { label: "Methods", skills: methodsSkills },
-              ].map(({ label, skills }, i) => (
-                <motion.div
-                  key={label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.45, delay: i * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
-                  className="rounded-2xl border border-[var(--border)] bg-[var(--background-alt)] p-6"
-                >
-                  <h3 className="font-display text-base font-bold text-[var(--text-primary)] mb-4 tracking-tight">
-                    {label}
-                  </h3>
-                  <ul className="flex flex-wrap gap-2">
-                    {skills.map((s) => (
-                      <li key={s}>
-                        <span className="rounded-lg border border-[var(--border)] bg-[var(--background)] px-2.5 py-1 text-[13px] font-medium text-[var(--text-secondary)]">
+            <div className="border-t border-[var(--border-strong)] pt-10">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--text-muted)] mb-10">
+                Toolkit
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[var(--border)]">
+                {[
+                  { label: "Design", skills: designSkills },
+                  { label: "Engineering", skills: engineeringSkills },
+                  { label: "Methods", skills: methodsSkills },
+                ].map(({ label, skills }, i) => (
+                  <motion.div
+                    key={label}
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.5, delay: i * 0.08, ease: [0.25, 0.4, 0.25, 1] }}
+                    className="py-8 sm:py-0 sm:px-10 first:pl-0 last:pr-0"
+                  >
+                    <h3 className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--accent)] mb-5">
+                      {label}
+                    </h3>
+                    <ul className="space-y-2.5">
+                      {skills.map((s) => (
+                        <li
+                          key={s}
+                          className="text-base text-[var(--text-secondary)] font-medium"
+                        >
                           {s}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </ScrollReveal>
 
-          {/* Fun facts */}
+          {/* Fun facts — magazine dateline strip */}
           <ScrollReveal className="mt-20">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--text-muted)] mb-3">
-              Outside the studio
-            </p>
-            <h2 className="font-display text-2xl font-bold text-[var(--text-primary)] mb-6 tracking-[-0.02em]">
-              Fun facts
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {funFacts.map(({ label, value }, i) => (
-                <motion.div
-                  key={label}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-30px" }}
-                  transition={{ duration: 0.4, delay: i * 0.07, ease: [0.25, 0.4, 0.25, 1] }}
-                  className="rounded-xl border border-[var(--border)] bg-[var(--background-alt)] px-5 py-4"
-                >
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[var(--text-muted)] mb-1">
-                    {label}
-                  </p>
-                  <p className="font-display font-bold text-[var(--text-primary)] text-lg tracking-tight">
-                    {value}
-                  </p>
-                </motion.div>
-              ))}
+            <div className="border-t border-[var(--border-strong)] pt-10">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--text-muted)] mb-10">
+                Outside the studio
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-5 divide-x divide-[var(--border)]">
+                {funFacts.map(({ label, value }, i) => (
+                  <motion.div
+                    key={label}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-30px" }}
+                    transition={{ duration: 0.4, delay: i * 0.06, ease: [0.25, 0.4, 0.25, 1] }}
+                    className="px-5 first:pl-0 py-2"
+                  >
+                    <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[var(--text-muted)] mb-2">
+                      {label}
+                    </p>
+                    <p className="font-display font-bold text-[var(--text-primary)] text-sm leading-snug tracking-tight">
+                      {value}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </ScrollReveal>
 
-          {/* Resume */}
-          <ScrollReveal className="mt-20 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 py-8 border-t border-[var(--border)]">
-            <div>
-              <h2 className="font-display text-2xl font-bold text-[var(--text-primary)] mb-1 tracking-[-0.01em]">
-                Resume
-              </h2>
-              <p className="text-[var(--text-secondary)] text-sm">Download my resume as a PDF.</p>
-            </div>
-            <a
-              href="/Neev_Seedani_Resume.pdf"
-              download="Neev_Seedani.pdf"
-              className="inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white tracking-wide hover:bg-[var(--accent-hover)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 w-fit"
+          {/* Resume — editorial callout */}
+          <ScrollReveal className="mt-20">
+            <div
+              className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8 px-10 py-10"
+              style={{ background: "var(--background-alt)", borderLeft: "3px solid var(--accent)" }}
             >
-              Download PDF
-            </a>
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--accent)] mb-2">
+                  Full picture
+                </p>
+                <h2 className="font-display text-2xl sm:text-3xl font-bold text-[var(--text-primary)] tracking-[-0.02em]">
+                  Neev Seedani
+                </h2>
+                <p className="text-[var(--text-muted)] text-sm mt-1">
+                  Product Design · Stanford University · 2027
+                </p>
+              </div>
+              <a
+                href="/Neev_Seedani_Resume.pdf"
+                download="Neev_Seedani.pdf"
+                className="inline-flex items-center gap-2.5 rounded-full bg-[var(--accent)] px-7 py-3.5 text-sm font-semibold text-white tracking-wide hover:bg-[var(--accent-hover)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 w-fit flex-shrink-0"
+              >
+                Download résumé
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              </a>
+            </div>
           </ScrollReveal>
 
-          <ScrollReveal className="mt-12">
+          <ScrollReveal className="mt-12 pb-4">
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 text-[var(--accent)] font-medium hover:underline underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 rounded text-sm tracking-wide"

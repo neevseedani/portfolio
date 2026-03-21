@@ -94,6 +94,22 @@ export default function CaseStudyLayout({ project, content }: CaseStudyLayoutPro
         </div>
       </ScrollReveal>
 
+      {/* Embedded video */}
+      {content?.videoUrl && (
+        <div className="mx-auto max-w-[1200px] px-6 mt-12">
+          <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+            <iframe
+              src={content.videoUrl}
+              title="Project video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full rounded-xl"
+              style={{ border: "none" }}
+            />
+          </div>
+        </div>
+      )}
+
       {/* Gallery — auto-sorted by aspect ratio */}
       {content?.galleryImages && content.galleryImages.length > 0 && (
         <div className="mx-auto max-w-[1200px] px-6 mt-12">

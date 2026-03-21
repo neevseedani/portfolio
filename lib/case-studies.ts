@@ -13,6 +13,8 @@ export interface GalleryImage {
 export interface CaseStudyContent {
   overview: string;
   myRole: string;
+  /** Optional YouTube embed URL (use youtube.com/embed/VIDEO_ID format) */
+  videoUrl?: string;
   process: { title: string; body: string }[];
   outcomes: string[];
   reflection: string;
@@ -138,6 +140,7 @@ const contentMap: Record<string, CaseStudyContent> = {
     ],
     reflection:
       "Building something end-to-end from idea to ship was incredibly rewarding. I'd add more keyboard shortcuts and theming options in a next version.",
+    videoUrl: "https://www.youtube.com/embed/JVuWeC5oFCg",
     galleryImages: [
       { src: "/images/projects/osu-radio1.png", width: 1080, height: 1080 },
       { src: "/images/projects/osu-radio2.png", width: 1080, height: 1080 },

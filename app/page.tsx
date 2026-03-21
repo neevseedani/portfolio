@@ -180,18 +180,16 @@ export default function HomePage() {
       <section className="px-6 py-24" aria-labelledby="about-heading">
         <div className="mx-auto max-w-[1200px]">
           <ScrollReveal>
-            <div className="flex flex-col md:flex-row md:items-center gap-10 md:gap-16">
+            <div className="flex flex-col items-center text-center gap-8">
               {/* Photo */}
-              <div className="flex-shrink-0">
-                <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden border border-[var(--border)]">
-                  <Image
-                    src="/images/about/neev.webp"
-                    alt="Neev Seedani"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 192px, 224px"
-                  />
-                </div>
+              <div className="relative w-40 h-40 rounded-full overflow-hidden">
+                <Image
+                  src="/images/about/neev.webp"
+                  alt="Neev Seedani"
+                  fill
+                  className="object-cover"
+                  sizes="160px"
+                />
               </div>
 
               {/* Text */}
@@ -205,7 +203,7 @@ export default function HomePage() {
                 >
                   Hi, I&apos;m Neev
                 </h2>
-                <p className="text-lg text-[var(--text-secondary)] leading-relaxed max-w-lg mb-8">
+                <p className="text-lg text-[var(--text-secondary)] leading-relaxed max-w-lg mb-8 mx-auto text-justify">
                   Sophomore at Stanford double-majoring in Design (UI/UX) and Computer Science (HCI).
                   I care deeply about accessibility, community, and making technology feel human.
                 </p>

@@ -24,7 +24,7 @@ export default function ProjectCard({ project, index = 0, priority = false }: Pr
     >
       <Link
         href={`/works/${project.slug}`}
-        className="block rounded-2xl overflow-hidden border border-[var(--border)] bg-[var(--background-alt)] transition-[border-color,box-shadow] duration-300 hover:border-[var(--border-strong)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2"
+        className="block rounded-2xl overflow-hidden bg-[var(--background-alt)] transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2"
       >
         {/* Image */}
         <div className="relative aspect-[4/3] overflow-hidden">
