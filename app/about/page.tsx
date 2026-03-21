@@ -270,7 +270,7 @@ export default function AboutPage() {
                   Neev Seedani
                 </h2>
                 <p className="text-[var(--text-muted)] text-sm mt-1">
-                  Psychology & Design · Stanford University · 2027
+                  Psychology & Design · Stanford University · 2028
                 </p>
               </div>
               <a
