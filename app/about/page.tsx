@@ -180,7 +180,7 @@ export default function AboutPage() {
             </div>
             <a
               href="/Neev_Seedani_Resume.pdf"
-              download
+              download="Neev_Seedani.pdf"
               className="inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white tracking-wide hover:bg-[var(--accent-hover)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 w-fit"
             >
               Download PDF
