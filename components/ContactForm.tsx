@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 
-// Get your free access key at https://web3forms.com — enter neev@stanford.edu, copy the key.
-const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "";
+const WEB3FORMS_ACCESS_KEY = "259878c6-f43b-4698-bf1f-f2f8dc320dd3";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
