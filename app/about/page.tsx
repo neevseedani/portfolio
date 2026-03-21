@@ -284,15 +284,6 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
 
-          <ScrollReveal className="mt-12 pb-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 text-[var(--accent)] font-medium hover:underline underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 rounded text-sm tracking-wide"
-            >
-              Get in touch <span aria-hidden>→</span>
-            </Link>
-          </ScrollReveal>
-
         </div>
       </div>
     </>
