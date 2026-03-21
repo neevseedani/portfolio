@@ -56,7 +56,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Neev Seedani
           </p>
           <p className="text-xs" style={{ color: "rgba(255,255,255,0.18)" }}>
-            Built with Next.js · Fraunces & DM Sans
+            Built with Next.js · Barlow & DM Sans
           </p>
         </div>
       </div>

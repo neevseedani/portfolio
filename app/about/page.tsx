@@ -63,7 +63,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
             className="font-display font-bold leading-[0.88]"
-            style={{ fontSize: "clamp(3.5rem, 9vw, 9rem)", color: "rgba(255,255,255,0.95)", letterSpacing: "-0.05em" }}
+            style={{ fontSize: "clamp(3.5rem, 9vw, 14rem)", color: "rgba(255,255,255,0.95)", letterSpacing: "-0.05em" }}
           >
             About me
           </motion.h1>
@@ -86,9 +86,9 @@ export default function AboutPage() {
           {/* Bio + photo */}
           <ScrollReveal className="mb-24">
             <div className="flex flex-col md:flex-row md:items-start gap-14">
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0 w-full sm:w-72 md:w-96">
                 <div
-                  className="relative w-72 md:w-96"
+                  className="relative w-full"
                   style={{ aspectRatio: "3/4", boxShadow: "0 12px 48px rgba(0,0,0,0.13)" }}
                 >
                   <Image
@@ -97,12 +97,12 @@ export default function AboutPage() {
                     fill
                     className="object-cover"
                     style={{ objectPosition: "center 20%" }}
-                    sizes="(max-width: 768px) 288px, 384px"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 288px, 384px"
                   />
                 </div>
               </div>
               <div className="flex-1 pt-2">
-                <div className="space-y-6 text-xl text-[var(--text-secondary)] leading-relaxed max-w-lg">
+                <div className="space-y-6 text-base sm:text-xl text-[var(--text-secondary)] leading-relaxed max-w-lg">
                   <p>
                     I&apos;m a sophomore at Stanford double-majoring in Psychology (Visual Perception) and Design (UI/UX).
                     I specialize in bubbly, intuitive experiences — with 3 years of work across product design, design systems, and full-stack projects.
@@ -125,7 +125,7 @@ export default function AboutPage() {
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--text-muted)] mb-6">
               Photos
             </p>
-            <div className="flex gap-4 overflow-x-auto pb-2" style={{ scrollbarWidth: "none" }}>
+            <div className="flex gap-4 overflow-x-auto pb-2 no-scrollbar" style={{ scrollbarWidth: "none" }}>
               <div
                 className="relative flex-shrink-0 w-56"
                 style={{ aspectRatio: "3/4", boxShadow: "0 8px 32px rgba(0,0,0,0.10)" }}
@@ -234,7 +234,7 @@ export default function AboutPage() {
               <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--text-muted)] mb-10">
                 Outside the studio
               </p>
-              <div className="grid grid-cols-2 md:grid-cols-5 divide-x divide-[var(--border)]">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-x-0 divide-y divide-[var(--border)] md:divide-y-0 md:divide-x">
                 {funFacts.map(({ label, value }, i) => (
                   <motion.div
                     key={label}
@@ -242,7 +242,7 @@ export default function AboutPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-30px" }}
                     transition={{ duration: 0.4, delay: i * 0.06, ease: [0.25, 0.4, 0.25, 1] }}
-                    className="px-5 first:pl-0 py-2"
+                    className="px-0 md:px-5 md:first:pl-0 md:last:pr-0 py-4 md:py-2"
                   >
                     <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[var(--text-muted)] mb-2">
                       {label}

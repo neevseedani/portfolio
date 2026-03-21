@@ -57,7 +57,7 @@ export default function HomePage() {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(8,6,4,0.55) 0%, rgba(8,6,4,0.15) 50%, rgba(8,6,4,0.40) 100%)",
+              "linear-gradient(to bottom, rgba(8,6,4,0.55) 0%, rgba(8,6,4,0.22) 50%, rgba(8,6,4,0.52) 100%)",
           }}
           aria-hidden
         />
@@ -73,7 +73,7 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, ease: [0.25, 0.4, 0.25, 1] }}
               className="font-display font-bold text-white leading-[0.88] group cursor-default"
-              style={{ fontSize: "clamp(3.5rem, 11vw, 13rem)", letterSpacing: "-0.05em" }}
+              style={{ fontSize: "clamp(3.5rem, 11vw, 18rem)", letterSpacing: "-0.05em" }}
             >
               <span className="block">
                 <span className="relative inline-block">
@@ -94,7 +94,10 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
               className="mt-7 text-base sm:text-lg leading-relaxed max-w-xl"
-              style={{ color: "rgba(255,255,255,0.92)" }}
+              style={{
+                color: "rgba(255,255,255,1)",
+                textShadow: "0 1px 8px rgba(0,0,0,0.55), 0 4px 24px rgba(0,0,0,0.35)",
+              }}
             >
               Stanford sophomore studying Psychology & Design. I build bubbly, intuitive products at the intersection of design and engineering.
             </motion.p>
@@ -203,7 +206,7 @@ export default function HomePage() {
               id="selected-works-heading"
               className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-12 tracking-[-0.02em]"
             >
-              Selected works
+              Selected Works
             </h2>
           </ScrollReveal>
           <div className="grid gap-8 sm:grid-cols-2">
