@@ -104,7 +104,7 @@ export default function AboutPage() {
               <div className="flex-1 pt-2">
                 <div className="space-y-6 text-xl text-[var(--text-secondary)] leading-relaxed max-w-lg">
                   <p>
-                    I&apos;m a sophomore at Stanford double-majoring in Design (UI/UX) and Computer Science (HCI).
+                    I&apos;m a sophomore at Stanford double-majoring in Psychology (Visual Perception) and Design (UI/UX).
                     I specialize in bubbly, intuitive experiences — with 3 years of work across product design, design systems, and full-stack projects.
                   </p>
                   <p>
@@ -270,7 +270,7 @@ export default function AboutPage() {
                   Neev Seedani
                 </h2>
                 <p className="text-[var(--text-muted)] text-sm mt-1">
-                  Product Design · Stanford University · 2027
+                  Psychology & Design · Stanford University · 2027
                 </p>
               </div>
               <a

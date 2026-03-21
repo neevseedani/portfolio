@@ -48,8 +48,16 @@ export default function Navbar() {
       >
         <Link
           href="/"
-          className="font-display text-xl font-bold tracking-tight transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 rounded"
-          style={{ color: transparent ? "rgba(255,255,255,0.95)" : "var(--text-primary)" }}
+          onClick={e => {
+            if (pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
+          className="font-display text-xl font-bold tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 rounded"
+          style={{ color: transparent ? "rgba(255,255,255,0.95)" : "var(--text-primary)", transition: "color 0.2s ease, opacity 0.2s ease" }}
+          onMouseEnter={e => (e.currentTarget.style.opacity = "0.6")}
+          onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
           aria-label="Neev Seedani — Home"
         >
           NEEV

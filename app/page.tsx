@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Fragment } from "react";
-import { motion } from "framer-motion";
+import { Fragment, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
 import ProjectCard from "@/components/ProjectCard";
 import { getFeaturedProjects } from "@/lib/projects";
@@ -24,6 +24,15 @@ const skills = [
 
 export default function HomePage() {
   const featured = getFeaturedProjects();
+  const [copied, setCopied] = useState(false);
+
+  function handleCopyEmail(e: React.MouseEvent) {
+    e.preventDefault();
+    navigator.clipboard.writeText("neev@stanford.edu").then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }
 
   return (
     <>
@@ -63,11 +72,21 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, ease: [0.25, 0.4, 0.25, 1] }}
-              className="font-display font-bold text-white leading-[0.88]"
+              className="font-display font-bold text-white leading-[0.88] group cursor-default"
               style={{ fontSize: "clamp(3.5rem, 11vw, 13rem)", letterSpacing: "-0.05em" }}
             >
-              <span className="block">NEEV</span>
-              <span className="block" style={{ color: "rgba(255,255,255,0.82)" }}>SEEDANI</span>
+              <span className="block">
+                <span className="relative inline-block">
+                  NEEV
+                  <span className="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" style={{ background: "rgba(255,255,255,0.50)" }} aria-hidden />
+                </span>
+              </span>
+              <span className="block" style={{ color: "rgba(255,255,255,0.82)" }}>
+                <span className="relative inline-block">
+                  SEEDANI
+                  <span className="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out delay-75" style={{ background: "rgba(255,255,255,0.38)" }} aria-hidden />
+                </span>
+              </span>
             </motion.h1>
 
             <motion.p
@@ -77,24 +96,57 @@ export default function HomePage() {
               className="mt-7 text-base sm:text-lg leading-relaxed max-w-xl"
               style={{ color: "rgba(255,255,255,0.92)" }}
             >
-              Designer specializing in bubbly, intuitive products — with 3 years of experience at the intersection of design and engineering. Based at Stanford, California.
+              Stanford sophomore studying Psychology & Design. I build bubbly, intuitive products at the intersection of design and engineering.
             </motion.p>
 
-            <motion.a
+            <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              href="mailto:neev@stanford.edu"
-              className="mt-4 inline-flex items-center gap-1.5 font-medium text-sm tracking-wide transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 rounded"
-              style={{ color: "rgba(255,255,255,0.72)" }}
-              onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,1)")}
-              onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.72)")}
+              onClick={handleCopyEmail}
+              className="mt-4 inline-flex items-center gap-1.5 font-medium text-sm tracking-wide focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 rounded cursor-pointer relative overflow-hidden group/email"
+              style={{ color: copied ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.72)", transition: "color 0.2s ease" }}
+              aria-label="Copy email address"
             >
-              neev@stanford.edu
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                <path d="M7 17L17 7M17 7H7M17 7V17" />
-              </svg>
-            </motion.a>
+              <AnimatePresence mode="wait">
+                {copied ? (
+                  <motion.span
+                    key="copied"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.18 }}
+                    className="inline-flex items-center gap-1.5"
+                  >
+                    copied!
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <path d="M20 6L9 17l-5-5" />
+                    </svg>
+                  </motion.span>
+                ) : (
+                  <motion.span
+                    key="email"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.18 }}
+                    className="inline-flex items-center gap-1.5"
+                  >
+                    neev@stanford.edu
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                    </svg>
+                    <span
+                      className="opacity-0 group-hover/email:opacity-100 -translate-x-1 group-hover/email:translate-x-0 transition-all duration-300 ease-out text-xs tracking-wide"
+                      style={{ color: "rgba(255,255,255,0.55)" }}
+                      aria-hidden
+                    >
+                      copy?
+                    </span>
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </motion.button>
           </div>
 
           {/* Skills — pinned to bottom of hero */}
@@ -204,7 +256,7 @@ export default function HomePage() {
                   Hi, I&apos;m Neev
                 </h2>
                 <p className="text-lg text-[var(--text-secondary)] leading-relaxed max-w-lg mb-8 mx-auto text-justify">
-                  Sophomore at Stanford double-majoring in Design (UI/UX) and Computer Science (HCI).
+                  Sophomore at Stanford double-majoring in Psychology (Visual Perception) and Design (UI/UX).
                   I care deeply about accessibility, community, and making technology feel human.
                 </p>
                 <Link
