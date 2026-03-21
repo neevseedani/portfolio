@@ -3,7 +3,6 @@
 import Link from "next/link";
 
 const socialLinks = [
-  { href: "https://linkedin.com/in/neevseedani", label: "LinkedIn", external: true },
   { href: "https://github.com/neevseedani", label: "GitHub", external: true },
   { href: "mailto:neev@stanford.edu", label: "Email", external: true },
 ];

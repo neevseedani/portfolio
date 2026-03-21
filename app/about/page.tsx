@@ -259,24 +259,13 @@ export default function AboutPage() {
           {/* Resume — editorial callout */}
           <ScrollReveal className="mt-20">
             <div
-              className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8 px-10 py-10"
+              className="px-10 py-10"
               style={{ background: "var(--background-alt)", borderLeft: "3px solid var(--accent)" }}
             >
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--accent)] mb-2">
-                  Full picture
-                </p>
-                <h2 className="font-display text-2xl sm:text-3xl font-bold text-[var(--text-primary)] tracking-[-0.02em]">
-                  Neev Seedani
-                </h2>
-                <p className="text-[var(--text-muted)] text-sm mt-1">
-                  Psychology & Design · Stanford University · 2028
-                </p>
-              </div>
               <a
                 href="/Neev_Seedani_Resume.pdf"
                 download="Neev_Seedani.pdf"
-                className="inline-flex items-center gap-2.5 rounded-full bg-[var(--accent)] px-7 py-3.5 text-sm font-semibold text-white tracking-wide hover:bg-[var(--accent-hover)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 w-fit flex-shrink-0"
+                className="inline-flex items-center gap-2.5 rounded-full bg-[var(--accent)] px-7 py-3.5 text-sm font-semibold text-white tracking-wide hover:bg-[var(--accent-hover)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 w-fit"
               >
                 Download résumé
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
