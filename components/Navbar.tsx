@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = [
   { href: "/works", label: "Works" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "https://linkedin.com/in/neevseedani", label: "LinkedIn", external: true },
 ];
 
 export default function Navbar() {
@@ -65,12 +65,13 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map(({ href, label }) => {
-            const isActive = pathname === href || pathname.startsWith(href + "/");
+          {navLinks.map(({ href, label, external }) => {
+            const isActive = !external && (pathname === href || pathname.startsWith(href + "/"));
             return (
               <li key={href}>
                 <Link
                   href={href}
+                  {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   className="relative text-sm font-medium tracking-wide focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 rounded group"
                   style={{
                     color: transparent
@@ -133,13 +134,14 @@ export default function Navbar() {
             style={{ borderColor: transparent ? "rgba(255,255,255,0.15)" : "var(--border)" }}
           >
             <ul className="flex flex-col px-6 py-4 gap-2">
-              {navLinks.map(({ href, label }) => (
+              {navLinks.map(({ href, label, external }) => (
                 <li key={href}>
                   <Link
                     href={href}
+                    {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     onClick={() => setMobileOpen(false)}
                     className={`block py-3 text-base font-medium ${
-                      pathname === href ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)]"
+                      !external && pathname === href ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)]"
                     } focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded`}
                   >
                     {label}
