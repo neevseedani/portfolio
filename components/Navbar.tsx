@@ -62,11 +62,18 @@ export default function Navbar() {
               <li key={href}>
                 <Link
                   href={href}
-                  className="relative text-sm font-medium tracking-wide transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 rounded"
+                  className="relative text-sm font-medium tracking-wide focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 rounded group"
                   style={{
                     color: transparent
                       ? isActive ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.65)"
                       : isActive ? "var(--text-primary)" : "var(--text-secondary)",
+                    transition: "color 0.2s ease",
+                  }}
+                  onMouseEnter={e => {
+                    if (!isActive) e.currentTarget.style.color = transparent ? "rgba(255,255,255,1)" : "var(--text-primary)";
+                  }}
+                  onMouseLeave={e => {
+                    if (!isActive) e.currentTarget.style.color = transparent ? "rgba(255,255,255,0.65)" : "var(--text-secondary)";
                   }}
                 >
                   {label}
@@ -81,32 +88,6 @@ export default function Navbar() {
               </li>
             );
           })}
-          <li>
-            <span
-              className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-1 text-[11px] font-semibold tracking-wide transition-all duration-300"
-              style={
-                transparent
-                  ? {
-                      border: "1px solid rgba(255,255,255,0.25)",
-                      background: "rgba(255,255,255,0.10)",
-                      color: "rgba(255,255,255,0.80)",
-                    }
-                  : {
-                      border: "1px solid rgba(191,92,44,0.30)",
-                      background: "var(--accent-muted)",
-                      color: "var(--accent-dark)",
-                    }
-              }
-              aria-label="Available for work"
-            >
-              <span
-                className="w-1.5 h-1.5 rounded-full inline-block transition-colors duration-300"
-                style={{ background: transparent ? "rgba(255,255,255,0.70)" : "var(--accent)" }}
-                aria-hidden
-              />
-              Available for work
-            </span>
-          </li>
         </ul>
 
         {/* Mobile menu button */}
@@ -156,12 +137,6 @@ export default function Navbar() {
                   </Link>
                 </li>
               ))}
-              <li className="pt-2">
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-[rgba(191,92,44,0.30)] bg-[var(--accent-muted)] px-3.5 py-1 text-[11px] font-semibold tracking-wide text-[var(--accent-dark)]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] inline-block" aria-hidden />
-                  Available for work
-                </span>
-              </li>
             </ul>
           </motion.div>
         )}
