@@ -60,8 +60,8 @@ const contentMap: Record<string, CaseStudyContent> = {
     reflection:
       "Designing for 6k+ languages pushed me to think beyond Western UI assumptions. I learned how much typography, layout, and component design need to flex for different scripts and reading directions.",
     galleryImages: [
-      { src: "/images/projects/mokblok2.png", width: 1080, height: 1080 },
-      { src: "/images/projects/mokblok1b.png", width: 1080, height: 1080 },
+      { src: "/images/projects/mokblok2b.png", width: 1080, height: 1080 },
+      { src: "/images/projects/mokblok2c.png", width: 1080, height: 1080 },
     ],
   },
   refactor: {
