@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { fontInter } from "@/lib/fonts";
+import { fontDisplay, fontBody } from "@/lib/fonts";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={fontInter.variable}>
+    <html lang="en" className={`${fontDisplay.variable} ${fontBody.variable}`}>
       <body className="min-h-screen flex flex-col font-body antialiased">
         <a href="#main-content" className="skip-link">
           Skip to content

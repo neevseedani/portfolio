@@ -1,13 +1,23 @@
 import type { Project } from "./projects";
 
+export interface GalleryImage {
+  src: string;
+  /** Native pixel width — used to compute aspect ratio and layout weight */
+  width: number;
+  /** Native pixel height — used to compute aspect ratio and layout weight */
+  height: number;
+  /** Force this image to span the full row regardless of aspect ratio */
+  fullWidth?: boolean;
+}
+
 export interface CaseStudyContent {
   overview: string;
   myRole: string;
   process: { title: string; body: string }[];
   outcomes: string[];
   reflection: string;
-  /** Optional project visuals / gallery (paths under public/) */
-  galleryImages?: string[];
+  /** Optional project visuals / gallery */
+  galleryImages?: GalleryImage[];
 }
 
 const contentMap: Record<string, CaseStudyContent> = {
@@ -47,7 +57,11 @@ const contentMap: Record<string, CaseStudyContent> = {
     ],
     reflection:
       "Designing for 6k+ languages pushed me to think beyond Western UI assumptions. I learned how much typography, layout, and component design need to flex for different scripts and reading directions.",
-    galleryImages: ["/images/projects/unicode1.png", "/images/projects/mokblok1.png"],
+    galleryImages: [
+      { src: "/images/projects/mokblok1.png", width: 1080, height: 1080, fullWidth: true },
+      { src: "/images/projects/unicode1.png", width: 1080, height: 1080 },
+      { src: "/images/projects/mokblok2.png", width: 1080, height: 1080 },
+    ],
   },
   refactor: {
     overview:
@@ -84,7 +98,11 @@ const contentMap: Record<string, CaseStudyContent> = {
     ],
     reflection:
       "Balancing brand personality with clarity was key. I'd do more A/B testing on the onboarding flow post-launch to keep improving conversion.",
-    galleryImages: ["/images/projects/refactor3.png"],
+    galleryImages: [
+      { src: "/images/projects/refactor3.png", width: 2614, height: 1174 },
+      { src: "/images/projects/refactor4.png", width: 1080, height: 1080 },
+      { src: "/images/projects/refactor5.png", width: 1080, height: 1080 },
+    ],
   },
   "osu-radio": {
     overview:
@@ -120,6 +138,10 @@ const contentMap: Record<string, CaseStudyContent> = {
     ],
     reflection:
       "Building something end-to-end from idea to ship was incredibly rewarding. I'd add more keyboard shortcuts and theming options in a next version.",
+    galleryImages: [
+      { src: "/images/projects/osu-radio1.png", width: 1080, height: 1080 },
+      { src: "/images/projects/osu-radio2.png", width: 1080, height: 1080 },
+    ],
   },
   "threading-stories": {
     overview:
@@ -147,10 +169,14 @@ const contentMap: Record<string, CaseStudyContent> = {
     ],
     reflection:
       "Designing for physical play and community was a great shift from digital products. I learned how important clear instructions and inclusive prompts are for group dynamics.",
+    galleryImages: [
+      { src: "/images/projects/threading1.png", width: 1080, height: 1080 },
+      { src: "/images/projects/threading2.png", width: 1080, height: 1080 },
+    ],
   },
   "stanford-cdr": {
     overview:
-      "Stanford CDR project involved deep user research and design for external stakeholders (e.g. LG, Oneskin, Ordinary). We conducted 30+ interviews, created 5 personas, and ran 3 sprints culminating in a stakeholder presentation.",
+      "SCIDR Longevity Research involved deep user research and design for external stakeholders (e.g. LG, Oneskin, Ordinary). We conducted 30+ interviews, created 5 personas, and ran 3 sprints culminating in a stakeholder presentation.",
     myRole:
       "I led user research (interview design, recruitment, synthesis), persona development, journey mapping, and prototype creation. I co-presented findings and design directions to stakeholders.",
     process: [
@@ -179,6 +205,10 @@ const contentMap: Record<string, CaseStudyContent> = {
     ],
     reflection:
       "Working with real stakeholders and real users in an academic context was invaluable. I'd allocate more time for follow-up research after the first round of testing.",
+    galleryImages: [
+      { src: "/images/projects/scidr1.png", width: 1080, height: 1080 },
+      { src: "/images/projects/scidr2.png", width: 1080, height: 1080 },
+    ],
   },
 };
 

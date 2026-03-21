@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 const socialLinks = [
@@ -8,20 +10,35 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--border)] bg-[var(--background-alt)]">
-      <div className="mx-auto max-w-[1200px] px-6 py-12">
-        <div className="flex flex-col items-center gap-6 text-center sm:flex-row sm:justify-between sm:text-left">
-          <p className="text-[var(--text-muted)] text-sm">
-            © {new Date().getFullYear()} Neev Seedani
-          </p>
+    <footer style={{ background: "var(--dark)" }}>
+      <div className="mx-auto max-w-[1200px] px-6 py-14">
+        <div className="flex flex-col gap-10 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p
+              className="font-display text-2xl font-bold tracking-tight"
+              style={{ color: "rgba(255,255,255,0.90)" }}
+            >
+              NEEV SEEDANI
+            </p>
+            <p
+              className="mt-1.5 text-sm"
+              style={{ color: "rgba(255,255,255,0.35)" }}
+            >
+              Designer & Developer · Stanford
+            </p>
+          </div>
+
           <nav aria-label="Social links">
-            <ul className="flex items-center gap-6">
+            <ul className="flex items-center gap-7">
               {socialLinks.map(({ href, label, external }) => (
                 <li key={label}>
                   <Link
                     href={href}
                     {...(external && { target: "_blank", rel: "noopener noreferrer" })}
-                    className="text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 rounded"
+                    className="text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 rounded"
+                    style={{ color: "rgba(255,255,255,0.45)" }}
+                    onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.90)")}
+                    onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.45)")}
                   >
                     {label}
                   </Link>
@@ -30,9 +47,18 @@ export default function Footer() {
             </ul>
           </nav>
         </div>
-        <p className="mt-6 text-center text-xs text-[var(--text-muted)]">
-          Built with Next.js
-        </p>
+
+        <div
+          className="mt-10 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"
+          style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
+        >
+          <p className="text-xs" style={{ color: "rgba(255,255,255,0.22)" }}>
+            © {new Date().getFullYear()} Neev Seedani
+          </p>
+          <p className="text-xs" style={{ color: "rgba(255,255,255,0.18)" }}>
+            Built with Next.js · Fraunces & DM Sans
+          </p>
+        </div>
       </div>
     </footer>
   );

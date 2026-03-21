@@ -8,6 +8,9 @@ export interface Project {
   timeline: string;
   tags: ProjectTag[];
   thumbnail: string;
+  /** Native pixel dimensions of the thumbnail — used to size the hero correctly */
+  thumbnailWidth: number;
+  thumbnailHeight: number;
   shortDescription: string;
   featured: boolean;
   featuredOrder?: number;
@@ -22,7 +25,9 @@ export const projects: Project[] = [
     role: "Product Design",
     timeline: "2024",
     tags: ["Product Design", "Engineering"],
-    thumbnail: "/images/projects/mokblok1.png",
+    thumbnail: "/images/projects/unicode-hero.png",
+    thumbnailWidth: 1080,
+    thumbnailHeight: 1080,
     shortDescription: "Multilingual design system — 130+ components, 6k+ languages, 80% reduction in iteration time.",
     featured: true,
     featuredOrder: 1,
@@ -40,7 +45,9 @@ export const projects: Project[] = [
     role: "Brand Identity + Web",
     timeline: "2024",
     tags: ["Branding", "Product Design"],
-    thumbnail: "/images/projects/refactor3.png",
+    thumbnail: "/images/projects/refactor-hero.png",
+    thumbnailWidth: 1080,
+    thumbnailHeight: 1080,
     shortDescription: "Brand identity and accessible web redesign — 35% brand recognition, 50% faster onboarding.",
     featured: true,
     featuredOrder: 2,
@@ -58,7 +65,9 @@ export const projects: Project[] = [
     role: "Full-Stack",
     timeline: "2024",
     tags: ["Engineering"],
-    thumbnail: "/images/projects/placeholder.svg",
+    thumbnail: "/images/projects/osu-radio-hero.png",
+    thumbnailWidth: 1080,
+    thumbnailHeight: 1080,
     shortDescription: "Music streaming platform — Electron + React + TypeScript, metadata caching, playlists.",
     featured: true,
     featuredOrder: 3,
@@ -74,7 +83,9 @@ export const projects: Project[] = [
     role: "Design + Community",
     timeline: "2024",
     tags: ["Product Design", "Research"],
-    thumbnail: "/images/projects/placeholder.svg",
+    thumbnail: "/images/projects/threading-hero.png",
+    thumbnailWidth: 1080,
+    thumbnailHeight: 1080,
     shortDescription: "Card game for community building — A3C project.",
     featured: true,
     featuredOrder: 4,
@@ -82,12 +93,14 @@ export const projects: Project[] = [
   },
   {
     slug: "stanford-cdr",
-    title: "Stanford CDR",
+    title: "SCIDR Longevity Research",
     company: "Stanford CDR",
     role: "Research & Design",
     timeline: "2024",
     tags: ["Research", "Product Design"],
-    thumbnail: "/images/projects/placeholder.svg",
+    thumbnail: "/images/projects/scidr-hero.png",
+    thumbnailWidth: 1080,
+    thumbnailHeight: 1080,
     shortDescription: "30+ interviews, 5 personas, 3 sprints — LG/Oneskin/Ordinary stakeholder presentation.",
     featured: false,
     metrics: [

@@ -1,12 +1,16 @@
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 
-export const fontInter = Inter({
-  variable: "--font-inter",
+// DM Sans — body text. Clean geometric sans-serif.
+export const fontBody = DM_Sans({
+  variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
 });
 
-// Use Inter for both display (headings) and body
-export const fontDisplay = fontInter;
-export const fontBody = fontInter;
+// Display font is set in globals.css as the system font stack:
+// -apple-system (SF Pro on Apple), BlinkMacSystemFont, Segoe UI on Windows.
+// No Google Font needed — the system font at weight 700 + tight tracking
+// is the design choice.
+export const fontDisplay = fontBody; // variable still needed for @theme
+export const fontInter = fontBody;
