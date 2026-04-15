@@ -3,6 +3,7 @@ import { fontDisplay, fontBody } from "@/lib/fonts";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import LoadingScreen from "@/components/LoadingScreen";
 
 export const metadata: Metadata = {
   title: "Neev Seedani — Designer & Developer",
@@ -28,6 +29,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
+        <LoadingScreen />
         <Navbar />
         <main id="main-content" className="flex-1 pt-[72px]">
           {children}

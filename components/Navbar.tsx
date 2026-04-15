@@ -20,7 +20,7 @@ export default function Navbar() {
     // Threshold scales to the header height of each page type
     const getThreshold = () => {
       if (pathname === "/") return window.innerHeight * 0.88;       // full-height hero
-      if (pathname === "/about") return window.innerHeight * 0.70;  // 75vh photo header
+      if (pathname === "/about") return window.innerHeight * 0.32;  // compact dark header
       return window.innerHeight * 0.38;                             // 42–46vh dark bands
     };
     const onScroll = () => setScrolled(window.scrollY > getThreshold());
